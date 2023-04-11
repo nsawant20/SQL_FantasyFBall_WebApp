@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Pocket Fantasy Football Analytics</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Enter your team below</h2>
+         <form action="mark" method="POST">
+           <div class="form-group">
+             <label for="username">Enter your username below:</label>
+             <input type="text" class="form-control col-lg-9" id="username" aria-describedby="emailHelp" placeholder="Enter username" name="username">
+           </div>
+           <div class="form-group">
+             <label for="QB">Enter your QB below:</label>
+             <input type="text" class="form-control col-lg-9" id="QB" aria-describedby="emailHelp" placeholder="Enter QB" name="QB">
+           </div>
+           <div class="form-group">
+             <label for="RB">Enter your RB1 below:</label>
+             <input type="text" class="form-control col-lg-9" id="RB" aria-describedby="emailHelp" placeholder="Enter RB1" name="RB">
+           </div>
+           <div class="form-group">
+             <label for="RB2">Enter your RB2 below:</label>
+             <input type="text" class="form-control col-lg-9" id="RB2" aria-describedby="emailHelp" placeholder="Enter RB2" name="RB2">
+           </div>
+           <div class="form-group">
+             <label for="WR">Enter your WR1 below:</label>
+             <input type="text" class="form-control col-lg-9" id="WR" aria-describedby="emailHelp" placeholder="Enter WR1" name="WR">
+           </div>
+           <div class="form-group">
+             <label for="WR2">Enter your WR2 below:</label>
+             <input type="text" class="form-control col-lg-9" id="WR2" aria-describedby="emailHelp" placeholder="Enter WR2" name="WR2">
+           </div>
+           <div class="form-group">
+             <label for="TE">Enter your TE below:</label>
+             <input type="text" class="form-control col-lg-9" id="TE" aria-describedby="emailHelp" placeholder="Enter TE" name="TE">
+           </div>
+           <div class="form-group">
+             <label for="FLEX">Enter your FLEX below:</label>
+             <input type="text" class="form-control col-lg-9" id="FLEX" aria-describedby="emailHelp" placeholder="Enter FLEX" name="FLEX">
+           </div>
+           <div class="form-group">
+             <label for="K">Enter your K below:</label>
+             <input type="text" class="form-control col-lg-9" id="K" aria-describedby="emailHelp" placeholder="Enter K" name="K">
+           </div>
+           <div class="form-group">
+             <label for="D_ST">Enter your D_ST below:</label>
+             <input type="text" class="form-control col-lg-9" id="D_ST" aria-describedby="emailHelp" placeholder="Enter D_ST" name="D_ST">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+ </div>
+ </body>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Find your team below</h2>
+         <form action="search_team" method="POST">
+           <div class="form-group">
+             <label for="search_username">Enter your username below:</label>
+             <input type="text" class="form-control col-lg-9" id="search_username" aria-describedby="emailHelp" placeholder="Enter username" name="search_username">
+           </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <div>
+         <h4><%= locals.user_name || 'User'%>'s Team:</h4>
+         <h5>QB: <%= locals.qb_name || "No player added"%> </h5>
+         <h5>RB1: <%= locals.rb_name || "No player added"%> </h5>
+         <h5>RB2: <%= locals.rb2_name || "No player added"%> </h5>
+         <h5>WR1: <%= locals.wr_name || "No player added"%> </h5>
+         <h5>WR2: <%= locals.wr2_name || "No player added"%> </h5>
+         <h5>TE: <%= locals.te_name || "No player added"%> </h5>
+         <h5>FLEX: <%= locals.flex_name || "No player added"%> </h5>
+         <h5>K: <%= locals.k_name || "No player added"%> </h5>
+         <h5>D/ST: <%= locals.d_st_name || "No team added"%> </h5>
+        </div>
+        </form>
+        </section>
+</div></div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <section>
+        <form action="update_team" method="POST">
+        <div class="form-group">
+             <label for="team_update">Enter username of team to update:</label>
+             <input type="text" class="form-control col-lg-9" id="team_update" aria-describedby="emailHelp" placeholder="Enter username" name="team_update">
+             <label for="QB_update">Enter name of updated QB:</label>
+             <input type="text" class="form-control col-lg-9" id="QB_update" aria-describedby="emailHelp" placeholder="Enter QB" name="QB_update">
+             <label for="RB1_update">Enter name of updated RB1:</label>
+             <input type="text" class="form-control col-lg-9" id="RB1_update" aria-describedby="emailHelp" placeholder="Enter RB1" name="RB1_update">
+             <label for="RB2_update">Enter name of updated RB2:</label>
+             <input type="text" class="form-control col-lg-9" id="RB2_update" aria-describedby="emailHelp" placeholder="Enter RB2" name="RB2_update">
+             <label for="WR1_update">Enter name of updated WR1:</label>
+             <input type="text" class="form-control col-lg-9" id="WR1_update" aria-describedby="emailHelp" placeholder="Enter WR1" name="WR1_update">
+             <label for="WR2_update">Enter name of updated WR2:</label>
+             <input type="text" class="form-control col-lg-9" id="WR2_update" aria-describedby="emailHelp" placeholder="Enter WR2" name="WR2_update">
+             <label for="TE_update">Enter name of updated TE:</label>
+             <input type="text" class="form-control col-lg-9" id="TE_update" aria-describedby="emailHelp" placeholder="Enter TE" name="TE_update">
+             <label for="DST_update">Enter name of updated D/ST:</label>
+             <input type="text" class="form-control col-lg-9" id="DST_update" aria-describedby="emailHelp" placeholder="Enter D/ST" name="DST_update">
+             <label for="K_update">Enter name of updated K:</label>
+             <input type="text" class="form-control col-lg-9" id="K_update" aria-describedby="emailHelp" placeholder="Enter K" name="K_update">
+             <label for="FLEX_update">Enter name of updated FLEX:</label>
+             <input type="text" class="form-control col-lg-9" id="FLEX_update" aria-describedby="emailHelp" placeholder="Enter FLEX" name="FLEX_update">
+         </div>
+        <button type="update" class="btn btn-warning">Update Team</button>
+        </form>
+        <p2><%=locals.update_success %></p2>
+</div></div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <section>
+        <form action="delete_team" method="POST">
+        <div class="form-group">
+             <label for="team_delete">Enter username of team to delete:</label>
+             <input type="text" class="form-control col-lg-9" id="team_delete" aria-describedby="emailHelp" placeholder="Enter username" name="team_delete">
+        </div>
+        <button type="delete" class="btn btn-danger">Delete Team</button>
+        </form>
+        <p2><%=locals.delete_success %></p2>
+</div></div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Generate Team Ratings:</h2>
+         <form action="team_ratings" method="POST">
+             <button type="find" class="btn btn-update">Generate</button>
+        </form>
+</div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+        <div>
+         <h4><%='User'%>'s Player Ratings:</h4>
+         <h5>QB: <%= locals.qb_rating || "Rating not generated"%> </h5>
+         <h5>RB1: <%= locals.rb_rating || "Rating not generated"%> </h5>
+         <h5>RB2: <%= locals.rb2_rating || "Rating not generated"%> </h5>
+         <h5>WR1: <%= locals.wr_rating || "Rating not generated"%> </h5>
+         <h5>WR2: <%= locals.wr2_rating || "Rating not generated"%> </h5>
+         <h5>TE: <%= locals.te_rating || "Rating not generated"%> </h5>
+         <h5>FLEX: <%= locals.Flex_rating || "Rating not generated"%> </h5>
+         <h5>K: <%= locals.K_rating || "Rating not generated"%> </h5>
+         <h5>D/ST: <%= locals.D_ST_rating || "Rating not generated"%> </h5>
+        </div>
+        </form>
+        </section>
+</div></div></div>
+
+
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>View QB Recommendations:</h2>
+         <form action="qb_recommendations" method="POST">
+             <button type="find" class="btn btn-update">View</button>
+        </form>
+        </div>
+
+     <div class="card">
+       <div class="card-body">
+        <div>
+         <h4><%='User'%>'s QB Recommendations:</h4>
+         <h5>QB1: <%= locals.qb_rec1 || "Rating not generated"%> </h5>
+         <h5>QB2: <%= locals.qb_rec2 || "Rating not generated"%> </h5>
+         <h5>QB3: <%= locals.qb_rec3 || "Rating not generated"%> </h5>
+         <h5>QB4: <%= locals.qb_rec4 || "Rating not generated"%> </h5>
+         <h5>QB5: <%= locals.qb_rec5 || "Rating not generated"%> </h5>
+        </div>
+        </form>
+        </section>
+</div></div></div>
+
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>View RB Recommendations:</h2>
+         <form action="rb_recommendations" method="POST">
+             <button type="find" class="btn btn-update">View</button>
+        </form>
+        </div>
+     <div class="card">
+       <div class="card-body">
+        <div>
+         <h4><%='User'%>'s RB Recommendations:</h4>
+         <h5>RB1: <%= locals.rb_rec1 || "Rating not generated"%> </h5>
+         <h5>RB2: <%= locals.rb_rec2 || "Rating not generated"%> </h5>
+         <h5>RB3: <%= locals.rb_rec3 || "Rating not generated"%> </h5>
+         <h5>RB4: <%= locals.rb_rec4 || "Rating not generated"%> </h5>
+         <h5>RB5: <%= locals.rb_rec5 || "Rating not generated"%> </h5>
+        </div>
+        </form>
+        </section>
+</div></div></div>
+
+<div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>View WR Recommendations:</h2>
+         <form action="wr_recommendations" method="POST">
+             <button type="find" class="btn btn-update">View</button>
+        </form>
+       </div>
+
+       <div class="card-body">
+        <div>
+        <h4><%='User'%>'s WR Recommendations:</h4>
+        <h5>WR1: <%= locals.wr_rec1 || "Rating not generated"%> </h5>
+        <h5>WR2: <%= locals.wr_rec2 || "Rating not generated"%> </h5>
+        <h5>WR3: <%= locals.wr_rec3 || "Rating not generated"%> </h5>
+        <h5>WR4: <%= locals.wr_rec4 || "Rating not generated"%> </h5>
+        <h5>WR5: <%= locals.wr_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>View TE Recommendations:</h2>
+ <form action="te_recommendations" method="POST">
+     <button type="find" class="btn btn-update">View</button>
+</form>
+</div>
+
+<div class="card-body">
+<div>
+ <h4><%='User'%>'s TE Recommendations:</h4>
+ <h5>TE1: <%= locals.te_rec1 || "Rating not generated"%> </h5>
+ <h5>TE2: <%= locals.te_rec2 || "Rating not generated"%> </h5>
+ <h5>TE3: <%= locals.te_rec3 || "Rating not generated"%> </h5>
+ <h5>TE4: <%= locals.te_rec4 || "Rating not generated"%> </h5>
+ <h5>TE5: <%= locals.te_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>View K Recommendations:</h2>
+ <form action="k_recommendations" method="POST">
+     <button type="find" class="btn btn-update">View</button>
+</form>
+</div>
+
+<div class="card-body">
+<div>
+ <h4><%='User'%>'s K Recommendations:</h4>
+ <h5>K1: <%= locals.k_rec1 || "Rating not generated"%> </h5>
+ <h5>K2: <%= locals.k_rec2 || "Rating not generated"%> </h5>
+ <h5>K3: <%= locals.k_rec3 || "Rating not generated"%> </h5>
+ <h5>K4: <%= locals.k_rec4 || "Rating not generated"%> </h5>
+ <h5>K5: <%= locals.k_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>View D/ST Recommendations:</h2>
+ <form action="dst_recommendations" method="POST">
+     <button type="find" class="btn btn-update">View</button>
+</form>
+</div>
+
+<div class="card-body">
+<div>
+ <h4><%='User'%>'s D/ST Recommendations:</h4>
+ <h5>DST1: <%= locals.dst_rec1 || "Rating not generated"%> </h5>
+ <h5>DST2: <%= locals.dst_rec2 || "Rating not generated"%> </h5>
+ <h5>DST3: <%= locals.dst_rec3 || "Rating not generated"%> </h5>
+ <h5>DST4: <%= locals.dst_rec4 || "Rating not generated"%> </h5>
+ <h5>DST5: <%= locals.dst_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>View FLEX Recommendations:</h2>
+ <form action="flex_recommendations" method="POST">
+     <button type="find" class="btn btn-update">View</button>
+</form>
+</div>
+
+<div class="card-body">
+<div>
+ <h4><%='User'%>'s FLEX Recommendations:</h4>
+ <h5>FLEX1: <%= locals.flex_rec1 || "Rating not generated"%> </h5>
+ <h5>FLEX2: <%= locals.flex_rec2 || "Rating not generated"%> </h5>
+ <h5>FLEX3: <%= locals.flex_rec3 || "Rating not generated"%> </h5>
+ <h5>FLEX4: <%= locals.flex_rec4 || "Rating not generated"%> </h5>
+ <h5>FLEX5: <%= locals.flex_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>Notable Injuries:</h2>
+ <form action="injury_recommendations" method="POST">
+     <button type="find" class="btn btn-update">View</button>
+</form>
+</div>
+
+<div class="card-body">
+<div>
+ <h4><Notable Injuries:</h4>
+ <h5>INJ1: <%= locals.injuries_rec1 || "Rating not generated"%> </h5>
+ <h5>INJ2: <%= locals.injuries_rec2 || "Rating not generated"%> </h5>
+ <h5>INJ3: <%= locals.injuries_rec3 || "Rating not generated"%> </h5>
+ <h5>INJ4: <%= locals.injuries_rec4 || "Rating not generated"%> </h5>
+ <h5>INJ5: <%= locals.injuries_rec5 || "Rating not generated"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>Find best flex players</h2>
+ <form action="find_best" method="POST">
+     <button type="find" class="btn btn-primary">Find Best</button>
+</form>
+</div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+<div>
+ <h5><%= locals.best1 || "Not checked"%> </h5>
+ <h5><%= locals.best2 || "Not checked"%> </h5>
+ <h5><%= locals.best3 || "Not checked"%> </h5>
+ <h5><%= locals.best4 || "Not checked"%> </h5>
+ <h5><%= locals.best5 || "Not checked"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+ <h2>Find above average Chicago bears wide receivers</h2>
+ <form action="find_average" method="POST">
+     <button type="find" class="btn btn-primary">Find Average</button>
+</form>
+</div></div>
+
+<div class="container mt-4">
+<div class="card">
+<div class="card-body">
+<div>
+ <h5><%= locals.best1 || "Not checked"%> </h5>
+</div>
+</form>
+</section>
+</div></div></div>
+<br></br>
+
+</html>
